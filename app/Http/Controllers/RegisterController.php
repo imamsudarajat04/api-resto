@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\RegisterApiRequest;
 
 class RegisterController extends Controller
 {
@@ -37,16 +36,7 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //create validator
-        // $validator = Validator::make(
-        //     [
-        //         'name'     => 'required|regex:/^[\pL\s\-]+$/u',
-        //         'email'    => 'required|email|unique:users',
-        //         'password' => 'required|min:3|confirmed',
-        //         'no_hp'    => 'required|regex:/^[0-9]+$/',
-        //     ]
-        // );
-
+        //function create account with validate request
         $user = User::create($request->all());
         
         if($user) {
